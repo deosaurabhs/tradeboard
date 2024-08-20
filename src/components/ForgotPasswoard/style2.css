@@ -16,14 +16,21 @@
     height: 100%;
     width: 50%;
 }
-.backbtn{
-  width: 60px;
-  height: 60px;
+.backbtn {
   cursor: pointer;
+  margin: 0;
+  width: 30px;
+  height: auto;
 }
 .backdiv{
   align-self: flex-start;
-  margin-left: 30px;
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #000000;
+  border-radius: 100%;
+  padding: 15px;
+  margin: 50px 50px 0;
 }
   .h1 {
     font-size: 24px;
@@ -59,6 +66,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 15px;
+    margin: 0 0 40px 0;
   }
   .btn5 {
     width: 520px;
@@ -84,6 +92,10 @@
     padding: 0 40px;
     height: 100%;
   }
+
+  .otpsendgmail {text-align: left;}
+  .otpsendgmail h1 {font-size: 40px !important; font-weight: 600 !important; margin-bottom: 20px;}
+  .otpsendgmail p {font-size: 20px !important; font-weight: 400 !important;}
   
   /* new password */
   .social-icons {
@@ -127,6 +139,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 15px;
+    margin: 0 0 40px 0;
   }
   .btn6 {
     width: 520px;
@@ -164,6 +177,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 15px;
+    margin: 0 0 40px 0;
   }
   .social-icons {
     display: flex;
@@ -174,16 +188,22 @@
   }
   .h1 {
     font-size: 24px;
+    font-weight: 700;
     margin-bottom: 10px;
   }
   .p4 {
-    color: #888;
+    color: #A6A8B1;
+    font-weight: 400;
     margin-bottom: 20px;
   }
   .label{
     align-self: baseline;
   }
-
+  .clearfix {clear: both;}
   /* .etext{
   height: 45px;
 } */
+
+@media screen and (max-width: 1024px) {
+  .btn7 {width: 100% !important;}
+}

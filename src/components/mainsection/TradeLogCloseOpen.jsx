@@ -22,7 +22,7 @@ function TradeLogCloseOpen() {
             color:!isTradeOpen?"white":"rgba(176, 176, 176, 1)"
           }}
         >
-          <span>Closed Trade</span>
+          <span style={{fontSize:14,fontFamily: 'Poppins',fontWeight: '400',}}>Closed Trade</span>
         </button>
 
         <button
@@ -35,7 +35,7 @@ function TradeLogCloseOpen() {
             color:isTradeOpen?"white":"rgba(176, 176, 176, 1)"
           }}
         >
-          <span>Open Trade</span>
+          <span style={{fontSize:14,fontFamily: 'Poppins',fontWeight: '400',}}>Open Trade</span>
         </button>
       </div>
     </div>

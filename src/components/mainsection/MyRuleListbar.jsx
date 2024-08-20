@@ -9,10 +9,10 @@ function MyRuleListbar({ ruleList }) {
       <div className="my-rule-list-heading">
         <div className="my-rule-select">
           <img src={selecticon} alt="select icon" />
-          <span>Rules</span>
+          <span  style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "500" }}>Rules</span>
         </div>
         <div>
-          <span>Action</span>
+          <span style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "500" }}>Action</span>
         </div>
       </div>
       <div style={{height:"16rem",overflow: 'auto',}}>

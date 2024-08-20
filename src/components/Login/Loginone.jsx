@@ -1,41 +1,146 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import img1 from "../../assets/images/Rectangle.png";
+import img2 from "../../assets/images/Rectangle.png";
+import img3 from "../../assets/images/Rectangle.png";
+// import ImageSlider from './ImageSlider';
+import "./style.css";
 import MyContext from "../../context/MyContext";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import LoginWithEmail from "./LoginWithEmail";
+import LoginWithMobile from "./LoginWithMobile";
+import { useNavigate } from "react-router-dom";
 import LoginLayout from "./LoginLayout";
-import "./style.css"; // Import the CSS file
+
+const images = [img1, img2, img3];
 
 function Loginone() {
+  const [isLoginWithEmailVisible, setisLoginWithEmailVisible] = useState(false);
+  const [isLoginWithMobileVisible, setisLoginWithMobileVisible] =
+    useState(false);
+  const [isSendOTPVisible, setSendOYPVisible] = useState(false);
+
   const navigate = useNavigate();
-  const { setChoosedLoginOption } = useContext(MyContext); // Access context
-
-  const handleGoogleLogin = async () => {
-    setChoosedLoginOption("Google"); // Set the chosen login option
-    window.location.href = "http://localhost:5000/auth/google";
+  const { choosedLoginOption, setChoosedLoginOption } = useContext(MyContext);
+  useEffect(() => {
+    getAsycData();
+  }, []);
+  const getAsycData = () => {
+    const value = localStorage.getItem("myVariable");
+    console.log("value", value);
+    if (value == 123) {
+      setisLoginWithEmailVisible(true);
+    }
   };
-
-  const loginWithEmail = () => {
-    setChoosedLoginOption("Email"); // Set the chosen login option
+  const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+  };
+  const loginwithemailMethod = () => {
+    // localStorage.setItem("myVariable", "123");
+    //setisLoginWithEmailVisible(true);
+    // setChoosedLoginOption(1);
     navigate("/loginwithemail");
   };
 
-  const loginWithMobile = () => {
-    setChoosedLoginOption("Mobile"); // Set the chosen login option
+  const backbtnMethod = () => {
+    // setisLoginWithEmailVisible(false);
+    setChoosedLoginOption(3);
+  };
+
+  const loginwithmobileMethod = () => {
+    //setisLoginWithMobileVisible(true);
+    // setChoosedLoginOption(2);
     navigate("/loginwithmobile");
   };
-
-  const signUp = () => {
-    navigate("/signup");
+  const backbtnMethod2 = () => {
+    setChoosedLoginOption(3);
+    // setisLoginWithMobileVisible(false);
   };
 
-  useEffect(() => {
-    // Check for authentication token in URL (for Google OAuth callback)
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
-    if (token) {
-      localStorage.setItem("authToken", token);
-      navigate("/dashboard"); // Redirect to dashboard or home page
+  const signUpMethod = () => {
+    console.log("sign up clicked");
+    navigate("/signUp");
+    //localStorage.clear();
+  };
+
+  const choosedLoginOptions = (option) => {
+    switch (option) {
+      case 1:
+        return (
+          <>
+            <div className="backdiv" onClick={() => backbtnMethod()}>
+              <img
+                className="backbtn"
+                src={require("../../assets/images/back-button.png")}
+              />
+            </div>
+            <LoginWithEmail />
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <div className="backdiv" onClick={() => backbtnMethod2()}>
+              <img
+                className="backbtn"
+                src={require("../../assets/images/back-button.png")}
+              />
+            </div>
+            <LoginWithMobile isVisible={isSendOTPVisible} />
+          </>
+        );
+
+      default:
+        return (
+          <form>
+            <div className="social-icons">
+              <h1>Log in to your account</h1>
+              <p className="pl">Please select any one of them</p>
+              <button className="btn">
+                <img
+                  src={require("../../assets/icons/search.png")}
+                  width="15"
+                  alt="Google"
+                />{" "}
+                Log in with Google
+              </button>
+              <button className="btn" onClick={() => loginwithemailMethod()}>
+                <img
+                  src={require("../../assets/icons/gmail.png")}
+                  width="15"
+                  alt="Email"
+                />{" "}
+                Log in with Email
+              </button>
+              <button className="btn" onClick={() => loginwithmobileMethod()}>
+                <img
+                  src={require("../../assets/icons/telephone-call.png")}
+                  width="15"
+                  alt="Mobile"
+                />{" "}
+                Log in with Mobile Number
+              </button>
+              <p
+                className="signup-text"
+                onClick={() => signUpMethod()}
+                style={{
+                  fontFamily: "Poppins"
+                }}
+              >
+                Don't have an account? <a href="#">Sign up</a>
+              </p>
+            </div>
+          </form>
+        );
     }
-  }, [navigate]);
+  };
 
   return (
     <LoginLayout>
@@ -43,7 +148,7 @@ function Loginone() {
         <div className="social-icons">
           <h1>Log in to your account</h1>
           <p className="pl">Please select any one of them</p>
-          <button type="button" className="butn" onClick={handleGoogleLogin}>
+          <button className="btn">
             <img
               src={require("../../assets/icons/search.png")}
               width="15"
@@ -51,7 +156,7 @@ function Loginone() {
             />{" "}
             Log in with Google
           </button>
-          <button type="button" className="butn" onClick={loginWithEmail}>
+          <button className="btn" onClick={() => loginwithemailMethod()}>
             <img
               src={require("../../assets/icons/gmail.png")}
               width="15"
@@ -59,7 +164,7 @@ function Loginone() {
             />{" "}
             Log in with Email
           </button>
-          <button type="button" className="butn" onClick={loginWithMobile}>
+          <button className="btn" onClick={() => loginwithmobileMethod()}>
             <img
               src={require("../../assets/icons/telephone-call.png")}
               width="15"
@@ -67,11 +172,8 @@ function Loginone() {
             />{" "}
             Log in with Mobile Number
           </button>
-          <p className="signup-text">
-            Don't have an account?{" "}
-            <a href="/signup" onClick={signUp}>
-              Sign up
-            </a>
+          <p className="signup-text"  style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "500" }}>
+            Don't have an account? <a href="/signup">Sign up</a>
           </p>
         </div>
       </form>

@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import Card from "../components/myjournals/Card";
 import Header from "../components/myjournals/Header";
+import MyContext from "../context/MyContext";
 
 function MyJournal() {
+  const { setIsRightSideBarOpen } = useContext(MyContext);
+
+  useEffect(() => {
+    setIsRightSideBarOpen(false);
+  }, []);
+
   const [journals, setJournals] = useState([
     {},
     {},
@@ -26,7 +33,7 @@ function MyJournal() {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            paddingLeft: 32 ,
+            paddingLeft: 32,
           }}
         >
           {journals.map((item, index) => {

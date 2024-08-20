@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const images = [img1, img2, img3];
 
-function LoginLayout({children}) {
+function LoginLayout({ children }) {
   const settings = {
     // dots: true,
     infinite: true,
@@ -42,7 +42,7 @@ function LoginLayout({children}) {
 
           <div className="text">
             <h3>Welcome to Tradeboard! 👋</h3>
-            <p>
+            <p style={{ fontFamily: "Poppins", fontWeight: "400" }}>
               Lorem ipsum is simply dummy text of the printing and typesetting
               industry. Lorem ipsum has been the industry's standard dummy text
               ever.

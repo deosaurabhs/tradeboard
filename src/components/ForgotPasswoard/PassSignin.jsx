@@ -1,35 +1,26 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import LoginLayout from "../Login/LoginLayout";
-import "./style2.css";
-import logo from "../../assets/icons/logo.jpg"; // Import the logo image
+import React, { useState, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-function PassSignin() {
-  const navigate = useNavigate();
-
-  const handleSignInClick = () => {
-    navigate("/login");
-  };
+function App() {
 
   return (
-    <LoginLayout>
-      <div className="social-icons">
-        <form>
+    <div className="social-icons">
+       <form>
           <div className="otpsendgmail">
-            <img src={logo} alt="Logo" height={50} style={{marginBottom:10}}/> {/* Use the imported image */}
             <h1>Password Reset</h1>
-            <p className="p4">
-              Your password has been successfully changed, click below to log
-              in.
+            <p className="p4">Your password has been successfully changed, click here to log in.
             </p>
-            <button className="btn7" onClick={handleSignInClick}>
-              Sign in
-            </button>
+            {/* <input type='passwoard' className="vtext" placeholder="New Passwoard"></input>
+            <input type='passwoard' className="vtext" placeholder="Confirm Passwoard"></input> */}
+            <button className="btn7">
+             Sign in
+            </button> 
+            
           </div>
         </form>
-      </div>
-    </LoginLayout>
+    </div>
   );
 }
 
-export default PassSignin;
+export default App;

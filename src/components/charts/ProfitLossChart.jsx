@@ -60,10 +60,14 @@ const ProfitLossChart = () => {
   };
 
   return (
-    <div style={{ width: "100%",marginBottom:24  }}>
-      <Card style={{backgroundColor: "rgba(250, 247, 255, 1)",}}>
+    <div style={{ width: "100%", marginBottom: 24 }}>
+      <Card style={{ backgroundColor: "rgba(250, 247, 255, 1)" }}>
         <Card.Body>
-          <Card.Title>Profit & Loss</Card.Title>
+          <Card.Title
+            style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "500" }}
+          >
+            Profit & Loss
+          </Card.Title>
           <Line data={data} options={options} />
         </Card.Body>
       </Card>

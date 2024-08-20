@@ -18,7 +18,7 @@
 }
 
 .trade-log-btn-a {
-  background-color: rgba(134, 87, 236, 1);
+  background-color: rgba(160, 115, 240, 1);
   color: white;
   margin-right: 16px;
   padding-top: 10px;
@@ -31,7 +31,7 @@
 
 .trade-log-btn-a:hover {
   opacity: 1;
-  background-color: rgb(120, 72, 225);
+  background-color: rgb(160, 115, 240);
 }
 
 .trade-log-btn-i {

@@ -63,7 +63,7 @@ const TradesTaken = () => {
     <div style={{ width: "100%",marginBottom:24 }}>
       <Card style={{backgroundColor: "rgba(250, 247, 255, 1)",}}>
         <Card.Body>
-          <Card.Title>Trades Taken (Daily Trade limit : 4)</Card.Title>
+          <Card.Title  style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "500" }}>Trades Taken (Daily Trade limit : 4)</Card.Title>
           <Line data={data} options={options} />
         </Card.Body>
       </Card>

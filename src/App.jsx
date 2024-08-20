@@ -1,46 +1,51 @@
-import React from "react";
+import "./App.css";
+
+// import icons
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "remixicon/fonts/remixicon.css";
+
+// import bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import Layout from "./components/layout/Layout";
+import Loginone from "./components/Login/Loginone";
+import MyState from "./context/MyState";
+import Signup from "./components/Signup/Signup";
+import OTPsendgmail from "./components/ForgotPasswoard/OTPsendgmail";
+import PasswordNew from "./components/ForgotPasswoard/PasswordNew";
+import LoginWithEmail from "./components/Login/LoginWithEmail";
+import LoginWithMobile from "./components/Login/LoginWithMobile";
+import OTPVerification from "./components/Login/OTPVerification";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
+  Link,
   Navigate,
   Outlet,
 } from "react-router-dom";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { AuthProvider } from "./context/AuthContext";
 
-// Import your components
-import Loginone from "./components/Login/Loginone";
-import Signup from "./components/Signup/Signup";
-import LoginWithEmail from "./components/Login/LoginWithEmail";
-import LoginWithMobile from "./components/Login/LoginWithMobile";
-import OTPVerification from "./components/Login/OTPVerification";
-import OTPVerificationemail from "./components/Login/OTPVerificationemail";
-import OTPsendgmail from "./components/ForgotPasswoard/OTPsendgmail";
-import PassSignin from "./components/ForgotPasswoard/PassSignin";
-import OAuthSuccess from "./components/OAuthSuccess"; // Import the OAuthSuccess component
 import MyDashboard from "./pages/MyDashboard";
 import MyAccount from "./pages/MyAccount";
 import MyJournal from "./pages/MyJournal";
 import AccountabilityPartner from "./pages/AccountabilityPartner";
 import PerformanceAnalytics from "./pages/PerformanceAnalytics";
-import PasswordNew from "./components/ForgotPasswoard/PasswordNew";
-import GmailVerification from "./components/ForgotPasswoard/GmailVerification";
 
 const isAuthenticated = () => {
-  const token = localStorage.getItem("token"); // Check for the token in localStorage
-  return !!token; // Return true if token exists
+  return JSON.parse(localStorage.getItem("isLoggedIn"));
 };
-
 
 const ProtectedRoute = () => {
   return isAuthenticated() ? <Outlet /> : <Navigate to="/login" />;
 };
 
+const AuthRoute = ({ children }) => {
+  return isAuthenticated() ? <Navigate to="/mainHome" /> : children;
+};
+
 function App() {
   return (
-    <AuthProvider>
+    <MyState>
       <Router>
         <Routes>
           <Route
@@ -49,25 +54,59 @@ function App() {
               <Navigate to={isAuthenticated() ? "/mainHome" : "/login"} />
             }
           />
-          <Route path="/login" element={<Loginone />} />
-          <Route path="/signUp" element={<Signup />} />
-          <Route path="/loginwithmobile" element={<LoginWithMobile />} />
-          <Route path="/loginwithemail" element={<LoginWithEmail />} />
-          <Route path="/otpverification" element={<OTPVerification />} />
           <Route
-            path="/otpverification-email"
-            element={<OTPVerificationemail />}
+            path="/login"
+            element={
+              <AuthRoute>
+                <Loginone />
+              </AuthRoute>
+            }
           />
-          <Route path="/oauth-success" element={<OAuthSuccess />} />
-          <Route path="/otpsendgmail" element={<OTPsendgmail />} />
-          <Route path="/mail-verification" element={<GmailVerification />} />
-          <Route path="/passsignin" element={<PassSignin />} />
-          <Route path="/set-new-password" element={<PasswordNew />} />
-          {/* Add this route */}
-          <Route element={<ProtectedRoute />}>
+          <Route
+            path="/signUp"
+            element={
+              <AuthRoute>
+                <Signup />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/loginwithmobile"
+            element={
+              <AuthRoute>
+                <LoginWithMobile />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/loginwithemail"
+            element={
+              <AuthRoute>
+                <LoginWithEmail />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/otpverification"
+            element={
+              <AuthRoute>
+                <OTPVerification />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/passwordnew"
+            element={
+              <AuthRoute>
+                <PasswordNew />
+              </AuthRoute>
+            }
+          />
+          <Route >
             <Route path="/mainHome" element={<MyDashboard />} />
-            <Route path="/myDashboard" element={<MyDashboard />} />
+            {/* <Route path="/myDashboard" element={<MyDashboard />} /> */}
             <Route path="/myJournal" element={<MyJournal />} />
+
             <Route
               path="/performanceAnalytics"
               element={<PerformanceAnalytics />}
@@ -78,9 +117,10 @@ function App() {
             />
             <Route path="/myAccount" element={<MyAccount />} />
           </Route>
+          <Route path="/OTPsendgmail" element={<OTPsendgmail />} />
         </Routes>
       </Router>
-    </AuthProvider>
+    </MyState>
   );
 }
 

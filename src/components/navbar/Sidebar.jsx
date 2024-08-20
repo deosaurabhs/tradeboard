@@ -17,7 +17,8 @@ import { ImFileText2 } from "react-icons/im";
 import { FiBriefcase } from "react-icons/fi";
 
 import diamondIcon from "../../assets/images/diamond.png";
-import infoIcon from "../../assets/icons/info.png"
+import infoIcon from "../../assets/icons/info.png";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
   const {
@@ -25,24 +26,15 @@ function Sidebar() {
     setIsLeftSideBarOpen,
     toggleLeftSideBar,
     toggleRightSideBar,
+    navOptions,
+    setNavOptions,
   } = useContext(MyContext);
-  const [navOptions, setNavOptions] = useState([
-    { name: "Dashboard", isSelected: true, icon: <BsGrid /> },
-    { name: "My Journal", isSelected: false, icon: <ImFileText2 /> },
-    {
-      name: "Performance Analytics",
-      isSelected: false,
-      icon: <FiBriefcase />,
-    },
-    {
-      name: "Accountability Partner",
-      isSelected: false,
-      icon: <BsPeopleFill />,
-    },
-    { name: "My Account", isSelected: false, icon: <BsPersonFill /> },
-  ]);
+  const navigate = useNavigate();
 
-  const onClickNavItem = (index) => {
+  const onClickNavItem = (item, index) => {
+    console.log("item.nav : ", item.nav);
+
+    navigate(`/${item.nav}`);
     const newNavOptions = navOptions.map((it, idx) => {
       if (index === idx) {
         it.isSelected = true;
@@ -67,7 +59,7 @@ function Sidebar() {
         transition: "left 0.3s ease-in-out",
         backgroundColor: "white",
         height: "100%",
-        paddingTop:"1.5rem"
+        paddingTop: "1.5rem",
         // width:"5rem" ,
       }}
       className="lay-sidebar"
@@ -89,35 +81,31 @@ function Sidebar() {
           {navOptions.map((item, index) => {
             return (
               <li
-                onClick={() => onClickNavItem(index)}
+                onClick={() => onClickNavItem(item, index)}
                 className="dashboard-item"
                 style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
                   backgroundColor: item.isSelected
                     ? "rgba(131, 69, 225, 1)"
                     : "#fff",
                 }}
               >
-                <a href="#">
-                  {/* <img
-                    src={item.icon}
-                    alt=""
-                    className="dashboard-icon"
-                    style={{ color: item.isSelected ? "white" : "black" }}
-                  /> */}
-                  <div style={{ color: item.isSelected ? "white" : "black" }}>
-                    {item.icon}
-                  </div>
-                  <span
-                    style={{
-                      color: item.isSelected ? "white" : "black",
-                      fontSize: 14,
-                      fontWeight: "400",
-                      marginLeft: 14,
-                    }}
-                  >
-                    {item.name}
-                  </span>
-                </a>
+                <div style={{ color: item.isSelected ? "white" : "black" }}>
+                  {item.icon}
+                </div>
+                <span
+                  style={{
+                    color: item.isSelected ? "white" : "black",
+                    fontSize: 14,
+                    fontWeight: "500",
+                    marginLeft: 14,
+                    fontFamily: "Poppins",
+                  }}
+                >
+                  {item.name}
+                </span>
               </li>
             );
           })}
@@ -126,14 +114,28 @@ function Sidebar() {
         <div className="dashboard-upcoming-level-container">
           <div className="dashboard-upcoming-level">
             <div>
-              <img src={diamondIcon} alt="Diamond" style={{ height: "5rem",marginBottom:"1rem" }} />
+              <img
+                src={diamondIcon}
+                alt="Diamond"
+                style={{ height: "5rem", marginBottom: "1rem" }}
+              />
             </div>
-            <p >
+            <p
+              style={{ fontSize: 14, fontFamily: "Poppins", fontWeight: "500" }}
+            >
               Upcoming Level : <span>Pearl</span>
             </p>
             <div className="dashboard-upcoming-level-points">
-              <img src={infoIcon} alt="info"  />
-              <span>Points : 0</span>
+              <img src={infoIcon} alt="info" />
+              <span
+                style={{
+                  fontSize: 14,
+                  fontFamily: "Poppins",
+                  fontWeight: "500",
+                }}
+              >
+                Points : 0
+              </span>
             </div>
           </div>
         </div>
@@ -142,9 +144,15 @@ function Sidebar() {
       <div className="d-flex  flex-column">
         <div className="d-flex  flex-column lock-container">
           <img src={lockIcon} alt="lock-icon" />
-          <p>Upgrade to PRO for more features.</p>
+          <p style={{ fontSize: 16, fontWeight: "500", fontFamily: "Poppins" }}>
+            Upgrade to PRO for more features.
+          </p>
           <button>
-            <span>Upgrade</span>
+            <span
+              style={{ fontSize: 16, fontWeight: "500", fontFamily: "Poppins" }}
+            >
+              Upgrade
+            </span>
           </button>
         </div>
         {/* <ul>
@@ -169,7 +177,7 @@ function Sidebar() {
         backgroundColor: "white",
         height: "100%",
         width: "5rem",
-        paddingTop:"1.5rem"
+        paddingTop: "1.5rem",
 
         //paddingTop: "4.5rem",
       }}
@@ -199,7 +207,7 @@ function Sidebar() {
           {navOptions.map((item, index) => {
             return (
               <li
-                onClick={() => onClickNavItem(index)}
+                onClick={() => onClickNavItem(item, index)}
                 className="dashboard-item-sm "
                 style={{
                   backgroundColor: item.isSelected

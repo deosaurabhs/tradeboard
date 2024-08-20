@@ -45,16 +45,6 @@ function RightSidebar() {
   };
 
   return (
-    // <aside
-    //   className="rsidebar lay-rightsidebar"
-    //   style={{
-    //     position: "relative",
-    //     // right: isRightSideBarOpen ? 0 : -289,
-    //     width: isRightSideBarOpen ? 0 : "100%",
-    //   }}
-    // >
-
-    // </aside>
     isRightSideBarOpen && (
       <div
         style={{

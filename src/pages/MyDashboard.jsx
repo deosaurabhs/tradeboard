@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import MyContext from "../context/MyContext";
 import Sidebar from "../components/navbar/Sidebar";
@@ -15,7 +15,15 @@ function MyDashboard() {
     toggleRightSideBar,
     toggleBottomSideBar,
     toggleLeftSideBar,
+    dashboardScreen,
+    setDashboardScreen,
+    setIsRightSideBarOpen,
   } = useContext(MyContext);
+
+  useEffect(() => {
+    setIsRightSideBarOpen(true);
+  }, []);
+  
   return (
     <Layout>
       <div className="layout-main-content">
@@ -23,7 +31,7 @@ function MyDashboard() {
         <TradeLog />
       </div>
 
-      <div
+      {/* <div
         className="layout-rsidebar right"
         style={{
           width: isRightSideBarOpen ? "280px" : "0px",
@@ -32,7 +40,7 @@ function MyDashboard() {
         }}
       >
         <RightSidebar />
-      </div>
+      </div> */}
     </Layout>
   );
 }

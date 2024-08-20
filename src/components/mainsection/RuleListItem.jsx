@@ -13,7 +13,7 @@ function RuleListItem({ ruleList, index }) {
     >
       <div className="my-rule-select">
         <img src={selecticon} alt="select icon" />
-        <span style={{ fontSize: 14, fontWeight: "500" }}>
+        <span style={{ fontSize: 14, fontWeight: "500",fontFamily:'Poppins', paddingLeft: "16px" }}>
           Lorem Ipsum is simply dummy text
         </span>
       </div>

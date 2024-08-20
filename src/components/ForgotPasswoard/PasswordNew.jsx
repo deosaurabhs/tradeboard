@@ -1,101 +1,99 @@
 import React, { useState } from "react";
+import "./style2.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Make sure you have axios installed
+import LoginLayout from "../Login/LoginLayout";
 
 function PasswordNew() {
-  const navigate = useNavigate();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
-  const handlePasswordChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "newPassword") {
-      setNewPassword(value);
-    } else if (name === "confirmPassword") {
-      setConfirmPassword(value);
+  const validate = () => {
+    const errors = {};
+
+    if (!newPassword) {
+      errors.newPassword = "New Password is required";
+    } else if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        newPassword
+      )
+    ) {
+      errors.newPassword =
+        "Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character";
     }
+
+    if (!confirmPassword) {
+      errors.confirmPassword = "Confirm Password is required";
+    } else if (confirmPassword !== newPassword) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+
+    return errors;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError("");
+    const validationErrors = validate();
+    setErrors(validationErrors);
 
-    if (newPassword !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    try {
-      // Retrieve userId and token from localStorage
-      const userId = localStorage.getItem("userId");
-      const token = localStorage.getItem("token");
-
-      if (!userId || !token) {
-        setError("User ID or token not found.");
-        return;
-      }
-
-      // Make API call to reset the password
-      const response = await axios.post(
-        "http://localhost:5000/auth/reset-password",
-        {
-          userId,
-          newPassword,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      if (response.status === 200) {
-        // Password reset successful
-        navigate("/passsignin");
-      } else {
-        setError(response.data.message || "Password reset failed.");
-      }
-    } catch (error) {
-      setError("An error occurred while resetting the password.");
-      console.error("Password reset error:", error);
+    if (Object.keys(validationErrors).length === 0) {
+      // Submit the form
+      console.log("Form submitted successfully");
+      navigate("/login");
     }
   };
 
   return (
-    <div className="social-icons">
+    <LoginLayout className="social-icons">
       <form onSubmit={handleSubmit}>
         <div className="otpsendgmail">
           <h1>Set a new password</h1>
-          <p className="p4">
+          <p
+            className="p4"
+            style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "500" }}
+          >
             Create a new password. Ensure it differs from previous ones for
             security
           </p>
-          <label className="label">New Password</label>
           <input
             type="password"
-            name="newPassword"
             className="vtext"
             placeholder="New Password"
             value={newPassword}
-            onChange={handlePasswordChange}
-            required
+            style={{ fontFamily: "Poppins" }}
+            onChange={(e) => setNewPassword(e.target.value)}
           />
-          <label className="label">Confirm Password</label>
+          {errors.newPassword && (
+            <div
+              style={{ color: "red", textAlign: "left", fontFamily: "Poppins" }}
+            >
+              {errors.newPassword}
+            </div>
+          )}
           <input
             type="password"
-            name="confirmPassword"
             className="vtext"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={handlePasswordChange}
-            required
+            style={{ fontFamily: "Poppins" }}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {error && <p className="error">{error}</p>}
-          <button type="submit" className="btn6">
+          {errors.confirmPassword && (
+            <div style={{ color: "red", textAlign: "left" }}>
+              {errors.confirmPassword}
+            </div>
+          )}
+          <button
+            className="btn6"
+            type="submit"
+            style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "500" }}
+          >
             Update Password
           </button>
         </div>
       </form>
-    </div>
+    </LoginLayout>
   );
 }
 

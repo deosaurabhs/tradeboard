@@ -1,19 +1,9 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext"; // Adjust the import path as needed
 import profileIcon from "../../assets/images/profile.png";
 import bottomSideIcon from "../../assets/icons/bottom-side.png";
-import "../../styles/navAvatar.css";
-import { useNavigate } from "react-router-dom";
+import "../../styles/navAvatar.css"
 
 function NavAvatar() {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login"); // Adjust the path as needed
-  };
-
   return (
     <li className="nav-item dropdown pe-3">
       <a
@@ -23,34 +13,41 @@ function NavAvatar() {
       >
         <img
           src={profileIcon}
-          className="profileDp rounded-circle"
+          className="profileDp"
           alt="profile"
+          className="rounded-circle"
         />
-        <span className="">Json Taylor</span>
+        <span className=""style={{fontSize:16,fontFamily: 'Poppins',fontWeight: '500',}}>Json Taylor</span>
 
-        <img src={bottomSideIcon} className="bottomSideIcon" alt="bottomicon" />
+        <img
+          src={bottomSideIcon}
+          className="bottomSideIcon"
+          alt="bottomicon"
+          // className="rounded-circle"
+        />
       </a>
 
       <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
         <li className="dropdown-header">
-          <a href="#" onClick={handleLogout}>
+         
+          <a href="#">
             <span className="badge rounded-pill bg-primary p-2 ms-2">
-              Logout
+             Logout
             </span>
           </a>
         </li>
         <li>
-          <hr className="dropdown-divider" />
+            <hr className="dropdown-divider"/>
         </li>
 
+
         <li className="notification-item">
-          {/* Example notification item */}
-          {/* <i className="bi bi-exclamation-circle text-warning"></i>
-          <div>
-            <h4>Lorem ipsum</h4>
-            <p>Lorem ipsum dolor sit?</p>
-            <p>38 min. ago</p>
-          </div> */}
+            {/* <i className="bi bi-exclamation-circle text-warning"></i>
+            <div>
+                <h4>Lorem ipsum</h4>
+                <p>Lorem ipsum dolor sit?</p>
+                <p>38 min. ago</p>
+            </div> */}
         </li>
       </ul>
     </li>

@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import img1 from "../../assets/images/Rectangle.png";
 import img2 from "../../assets/images/Rectangle.png";
 import img3 from "../../assets/images/Rectangle.png";
+// import ImageSlider from './ImageSlider';
 import "./style2.css";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import GmailVerification from "./GmailVerification";
+import PasswordNew from "./PasswordNew";
 
 const images = [img1, img2, img3];
 
 function OTPsendgmail() {
+  const [isGmailVerificationVisible, setisGmailVerificationVisible] =
+    useState(false);
+  const [isLoginWithEmailVisible, setisLoginWithEmailVisible] = useState(true);
+
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const settings = {
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -24,32 +38,41 @@ function OTPsendgmail() {
     autoplaySpeed: 5000,
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const GmailVerificationMethod = () => {
+    setisGmailVerificationVisible(true);
   };
 
-  const handleSendOTP = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/forgot-password",
-        { email }
-      );
-
-      if (response.status === 200) {
-        // Save userId to localStorage
-        localStorage.setItem("userId", response.data.userId); // Assuming response contains userId
-        navigate("/mail-verification"); // Navigate to OTP verification page
-      } else {
-        setError("Failed to send OTP. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      setError("Failed to send OTP. Please try again.");
-    }
+  const backbtnMethod2 = () => {
+    setisGmailVerificationVisible(false);
   };
 
   const backbtnMethod = () => {
-    navigate(-1);
+    if (isGmailVerificationVisible) {
+      setisGmailVerificationVisible(false);
+    } else {
+      navigate(-1);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+
+    if (!email) {
+      errors.email = "Email is required";
+    } else if (!validateEmail(email)) {
+      errors.email = "Invalid email address";
+    }
+
+    setErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      OtpVerificationMethod();
+    }
+  };
+
+  const OtpVerificationMethod = () => {
+    navigate("/otpverification", { state: { isLoginWithMobileProps: false } });
   };
 
   return (
@@ -59,32 +82,40 @@ function OTPsendgmail() {
           <div className="backdiv" onClick={() => backbtnMethod()}>
             <img
               className="backbtn"
-              src={require("../../assets/images/back-button (1).png")}
-              alt="Back"
+              src={require("../../assets/images/back-button.png")}
             />
           </div>
-          <div className="social-icons">
-            <form>
-              <div className="otpsendgmail">
-                <h1>Forgot Password?</h1>
-                <p className="p4">
-                  Please enter your email to reset the password
-                </p>
-                <label className="label">Email ID</label>
-                <input
-                  type="email"
-                  className="vtext"
-                  placeholder="Email ID"
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-                {error && <p className="text-red-600 text-sm">{error}</p>}
-                <button className="btn5" type="button" onClick={handleSendOTP}>
-                  Send OTP
-                </button>
+          {isGmailVerificationVisible ? (
+            <GmailVerification />
+          ) : (
+            <>
+              <div>
+                <form onSubmit={handleSubmit}>
+                  <div className="otpsendgmail">
+                    <h1>Forgot Password?</h1>
+                    <p className="p4" style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "400" }}>
+                      Please enter your email to reset the password
+                    </p>
+                    <input
+                      type="email"
+                      className="vtext"
+                      placeholder="Email ID"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {errors.email && (
+                      <div style={{ color: "red", textAlign: "left",fontFamily:'Poppins' }}>
+                        {errors.email}
+                      </div>
+                    )}
+                    <button className="btn5" type="submit" style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "400" }}>
+                      Send OTP
+                    </button>
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
+            </>
+          )}
         </div>
         <div className="col-lg-6" id="right-side">
           <Slider {...settings}>

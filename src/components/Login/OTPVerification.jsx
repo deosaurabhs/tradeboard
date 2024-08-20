@@ -1,26 +1,38 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Import axios for making HTTP requests
 import img1 from "../../assets/images/Rectangle.png";
 import img2 from "../../assets/images/Rectangle.png";
 import img3 from "../../assets/images/Rectangle.png";
+// import ImageSlider from './ImageSlider';
 import "./style.css";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useNavigate } from "react-router-dom";
-import LoginLayout from "./LoginLayout";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import LoginLayout from "../Login/LoginLayout";
 const images = [img1, img2, img3];
 
-function OTPVerification() {
+// function App() {
+//   const settings = {
+//     // dots: true,
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     autoplay: true,
+//     autoplaySpeed: 5000,
+//   };
+
+function OTPVerification({ props }) {
+  const location = useLocation();
+  const state = location.state || {};
   const [seconds, setSeconds] = useState(120); // Initial countdown value in seconds
   const [isActive, setIsActive] = useState(true);
-  const [otp, setOtp] = useState(""); // State to store OTP input
-  const [error, setError] = useState(""); // State to store error messages
-  const [userId, setUserId] = useState(""); // State to store user ID
+  const [otp, setOtp] = useState("");
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-
   const settings = {
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -28,8 +40,9 @@ function OTPVerification() {
     autoplay: true,
     autoplaySpeed: 5000,
   };
-
   useEffect(() => {
+    console.log("route : ", state);
+
     let interval = null;
     if (isActive && seconds > 0) {
       interval = setInterval(() => {
@@ -40,14 +53,6 @@ function OTPVerification() {
     }
     return () => clearInterval(interval);
   }, [isActive, seconds]);
-
-  useEffect(() => {
-    // Example of setting userId (could be fetched from localStorage or context)
-    const storedUserId = localStorage.getItem("userId");
-    if (storedUserId) {
-      setUserId(storedUserId);
-    }
-  }, []);
 
   const resetTimer = () => {
     setSeconds(120); // Reset to initial value
@@ -60,28 +65,41 @@ function OTPVerification() {
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await axios.post("http://localhost:5000/auth/verify-otp", {
-      otp,
-      userId,
-    });
-    console.log("Response:", response.data); // Debug response
-    if (response.data.message === "OTP verified successfully") {
+  const verifyOtp = () => {
+    localStorage.setItem("isLoggedIn", "1");
+    navigate("/mainHome");
+  };
+
+  const validateOtp = (otp) => {
+    return /^\d{4}$/.test(otp);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+
+    if (!otp) {
+      errors.otp = "OTP is required";
+    } else if (!validateOtp(otp)) {
+      errors.otp = "Invalid OTP. It must be a 4-digit number";
+    }
+
+    setErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      // Call your PasswordNewMethod here
+      VerifyOtpMethod();
+    }
+  };
+
+  const VerifyOtpMethod = () => {
+    if (state.isLoginWithMobileProps) {
       localStorage.setItem("isLoggedIn", "1");
-      localStorage.setItem("token", response.data.token); // Optionally store the token
       navigate("/mainHome");
     } else {
-      setError("Invalid OTP");
+      navigate("/passwordnew");
     }
-  } catch (err) {
-    console.error("Error verifying OTP:", err); // Debug error
-    setError("Error verifying OTP");
-  }
-};
-
-
+  };
 
   return (
     <LoginLayout className="social-icons">
@@ -94,37 +112,63 @@ const handleSubmit = async (e) => {
         >
           <img
             className="backbtn"
-            src={require("../../assets/images/back-button (1).png")}
-            alt="Back"
+            src={require("../../assets/images/back-button.png")}
           />
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="otpver">
-            <h1>OTP Verification</h1>
-            <p className="p3">
-              We have sent a 4-digit code to your registered mobile number
-              *******835
-            </p>
-            <label className="label">Enter OTP</label>
-            <input
-              type="number"
-              className="vtext"
-              placeholder="Enter OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-            />
-            {error && <p className="error-message">{error}</p>}
-            <button className="btn4" type="submit">
-              Verify OTP
-            </button>
-            <p className="resend-otp">
-              <div className="time">{formatTime(seconds)}</div>
-
-
-                <a href="#">Resend OTP</a>
-            </p>
-          </div>
-        </form>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="otpgmail">
+              <h1>OTP Verification</h1>
+              <p
+                className="p4"
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Poppins",
+                  fontWeight: "400",
+                }}
+              >
+                We have sent a 4-digit code to your registered email
+                Shu*********@gmail.com
+              </p>
+              <input
+                type="number"
+                className="vtext"
+                placeholder="Enter OTP"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+              {errors.otp && (
+                <div style={{ color: "red", textAlign: "left" }}>
+                  {errors.otp}
+                </div>
+              )}
+              <button
+                className="btn5"
+                type="submit"
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Poppins",
+                  fontWeight: "500",
+                }}
+              >
+                Verify OTP
+              </button>
+              <p className="resend-otp2">
+                <div className="time">{formatTime(seconds)}</div>
+                <div
+                  className="row"
+                  style={{
+                    fontSize: 16,
+                    fontFamily: "Poppins",
+                    fontWeight: "500",
+                  }}
+                >
+                  <a href="#">:Resend OTP</a>
+                </div>
+              </p>
+            </div>
+          </form>
+        </div>
       </>
     </LoginLayout>
   );

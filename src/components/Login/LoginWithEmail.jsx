@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import LoginLayout from "./LoginLayout";
-import { useAuth } from "../../context/AuthContext"; // Import the useAuth hook
 import img1 from "../../assets/images/Rectangle.png";
 import img2 from "../../assets/images/Rectangle.png";
 import img3 from "../../assets/images/Rectangle.png";
+// import ImageSlider from './ImageSlider';
 import "./style.css";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
+import LoginLayout from "./LoginLayout";
+import React, { useState } from "react";
 const images = [img1, img2, img3];
 
 function LoginWithEmail() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const { setUserId, setToken } = useAuth(); // Destructure setUserId and setToken from useAuth
+  const [newErrors, setErrors] = useState({ email: "", password: "" });
 
   const settings = {
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -29,49 +28,56 @@ function LoginWithEmail() {
     autoplaySpeed: 5000,
   };
 
-  useEffect(() => {
-    // Ensure the layout is fixed upon initial render or after any changes
-    // Perform any setup or cleanup needed here
-  }, []);
-
-  const forgotPasswordMethod = () => {
+  const forgotpasswordMethod = () => {
     navigate("/OTPsendgmail");
   };
 
-  const loginUpMethod = async () => {
-    try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
-        email,
-        password,
-      });
+  const loginUpMethod = (e) => {
+    e.preventDefault();
+    const newError = {};
 
-      console.log(response.data); // Log the entire response
-
-      if (response.data.message === "OTP sent. Please verify.") {
-        // Set userId and token if provided
-        setUserId(response.data.userId);
-        setToken(response.data.token);
-        localStorage.setItem("userId", response.data.userId);
-        localStorage.setItem("token", response.data.token);
-
-        navigate("/otpverification-email");
-      } else if (response.data.token) {
-        // Handle successful login case where OTP is not needed
-        setUserId(response.data.userId);
-        setToken(response.data.token);
-        localStorage.setItem("userId", response.data.userId);
-        localStorage.setItem("token", response.data.token);
-
-        navigate("/mainHome");
-      }
-    } catch (err) {
-      console.error("Error during login:", err);
-      setError("Login failed");
+    if (!validateEmail(email)) {
+      newError.email = "Invalid email address";
+    } else {
+      newError.email = "";
     }
+
+    if (!validatePassword(password)) {
+      newError.password =
+        "Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character";
+    } else {
+      newError.password = "";
+    }
+
+    setErrors(newError);
+
+    if (newError.email === "" && newError.password === "") {
+      // Submit the form
+      console.log("Form submitted successfully");
+      localStorage.setItem("isLoggedIn", "1");
+      navigate("/mainHome");
+    } else {
+      console.log("Form is not submitted successfully", newError);
+    }
+
+    // localStorage.clear();
   };
 
   const signUpMethod = () => {
+    console.log("sign up clicked");
     navigate("/signUp");
+    // localStorage.clear();
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const re =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return re.test(password);
   };
 
   return (
@@ -85,54 +91,91 @@ function LoginWithEmail() {
         >
           <img
             className="backbtn"
-            src={require("../../assets/images/back-button (1).png")}
-            alt="Back"
+            src={require("../../assets/images/back-button.png")}
           />
         </div>
-        <Slider {...settings}>
-          {images.map((image, index) => (
-            <div key={index}>
-              <img src={image} alt={`Slide ${index}`} />
+        <div>
+          <form onSubmit={loginUpMethod}>
+            <div className="email-form">
+              <h1>Log in with Email</h1>
+              <p
+                className="p2"
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Poppins",
+                  fontWeight: "400",
+                }}
+              >
+                Please enter your registered email and password
+              </p>
+              <input
+                type="email"
+                className="etext"
+                placeholder="Email ID"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div
+                style={{
+                  textAlign: "left",
+                  color: newErrors.email === "" ? "#000" : "red",
+                  fontFamily: "Poppins",
+                }}
+              >
+                {newErrors?.email}
+              </div>
+
+              <input
+                type="password"
+                className="etext"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div
+                style={{
+                  textAlign: "left",
+                  color: newErrors.password === "" ? "#000" : "red",
+                  fontFamily: "Poppins",
+                }}
+              >
+                {newErrors?.password}
+              </div>
+              <p
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Poppins",
+                  fontWeight: "500",
+                }}
+                className="forgot-pass"
+                onClick={() => forgotpasswordMethod()}
+              >
+                Forgot password?
+              </p>
+              <button
+                type="submit"
+                className="btn2"
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Poppins",
+                  fontWeight: "500",
+                }}
+              >
+                log in
+              </button>
+
+              <p
+                className="signup-text"
+                // onClick={() => signUpMethod()}
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Poppins",
+                  fontWeight: "500",
+                }}
+              >
+                Don't have an account? <a href="/signup">Sign up</a>
+              </p>
             </div>
-          ))}
-        </Slider>
-        <form>
-          <div className="email-form">
-            <h1>Log in with Email</h1>
-            <p className="p2">
-              Please enter your registered email and password
-            </p>
-            <label className="label">Email ID</label>
-            <input
-              type="email"
-              className="etext"
-              placeholder="Email ID"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label className="label">Password</label>
-            <input
-              type="password"
-              className="etext"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {error && <p className="text-red-600 text-sm">{error}</p>}
-            <p className="forgot-pass" onClick={forgotPasswordMethod}>
-              Forgot password?
-            </p>
-            <button onClick={loginUpMethod} className="btn2" type="button">
-              Log in
-            </button>
-            <p className="signup-text">
-              Don't have an account?{" "}
-              <a href="/signup" onClick={signUpMethod}>
-                Sign up
-              </a>
-            </p>
-          </div>
-        </form>
+          </form>
+        </div>
       </>
     </LoginLayout>
   );

@@ -8,7 +8,7 @@ import MyContext from "../../context/MyContext";
 import TradeLog from "../../components/mainsection/TradeLog";
 // import Login from "../../components/Login/login";
 
-function Layout() {
+function Layout({children}) {
   const {
     isLeftSideBarOpen,
     isRightSideBarOpen,
@@ -30,10 +30,7 @@ function Layout() {
         <Sidebar />
       </div>
 
-      <div className="layout-main-content">
-        <MainSection />
-        <TradeLog />
-      </div>
+      {children}
 
       <div
         className="layout-rsidebar right"

@@ -1,26 +1,31 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import img1 from "../../assets/images/Rectangle.png";
 import img2 from "../../assets/images/Rectangle.png";
 import img3 from "../../assets/images/Rectangle.png";
+// import ImageSlider from './ImageSlider';
 import "./style.css";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import OTPVerification from "./OTPVerification";
 import LoginLayout from "./LoginLayout";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
 const images = [img1, img2, img3];
 
-function LoginWithMobile() {
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+function LoginWithMobile(props) {
+  const [isOTPVerificationVisible, setisOTPVerificationVisible] =
+    useState(false);
+  const [seconds, setSeconds] = useState(120);
+  const [isActive, setIsActive] = useState(true);
+  const [mobileNumber, setmobileNumber] = useState("");
+  const [isMobileError, setIsMobileError] = useState(false);
+  const [mobileMessage, setMobileMessage] = useState("");
   const navigate = useNavigate();
-  const { setUserId, setToken } = useAuth();
 
   const settings = {
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -29,43 +34,71 @@ function LoginWithMobile() {
     autoplaySpeed: 5000,
   };
 
-  const handleMobileChange = (event) => {
-    setMobileNumber(event.target.value);
+  const OTPVerificationMethod = () => {
+    navigate("/otpverification", { state: { isLoginWithMobileProps: true } });
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const backbtnMethod = () => {
+    setisOTPVerificationVisible(false);
   };
 
-  const handleSendOTP = async () => {
-    try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
-        phone: mobileNumber,
-        password: password,
-      });
-
-      console.log("Server response:", response.data);
-
-      if (response.data.message === "OTP sent. Please verify.") {
-        const { userId, token } = response.data;
-
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("token", token);
-
-        setUserId(userId); // Now correctly defined
-        setToken(token); // Correctly defined
-
-        navigate("/otpverification");
-      } else {
-        setError("Unexpected response from server");
-      }
-    } catch (err) {
-      console.error(
-        "Login error:",
-        err.response ? err.response.data : err.message
-      );
-      setError("Failed to send OTP");
+  useEffect(() => {
+    let interval = null;
+    if (isActive && seconds > 0) {
+      interval = setInterval(() => {
+        setSeconds((seconds) => seconds - 1);
+      }, 1000);
+    } else if (seconds === 0) {
+      clearInterval(interval);
     }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
+
+  const resetTimer = () => {
+    setSeconds(120); // Reset to initial value
+    setIsActive(true);
+  };
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
+
+  const maskMobile = (mobile) => {
+    // Take the last 3 characters of the mobile number
+    const mobileStr = String(mobile);
+
+    // Take the last 3 characters of the mobile number
+    const visiblePart = mobileStr.slice(-3);
+
+    // Create the masked mobile number
+    const maskedMobile = `${"*".repeat(mobileStr.length - 3)}${visiblePart}`;
+    console.log(maskedMobile);
+    return maskedMobile;
+  };
+
+  const handleChange = (event) => {
+    setmobileNumber(event.target.value); // Update state with the input value
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validateMobileNumber(mobileNumber);
+
+    if (!isValid) {
+      setIsMobileError(true);
+      setMobileMessage("Please enter a valid 10-digit mobile number");
+    } else {
+      setIsMobileError(false);
+      setMobileMessage("");
+      OTPVerificationMethod();
+    }
+  };
+
+  const validateMobileNumber = (number) => {
+    const re = /^[0-9]{10}$/;
+    return re.test(number);
   };
 
   return (
@@ -79,41 +112,49 @@ function LoginWithMobile() {
         >
           <img
             className="backbtn"
-            src={require("../../assets/images/back-button (1).png")}
-            alt="Back"
+            src={require("../../assets/images/back-button.png")}
           />
         </div>
-        <form>
-          <div className="mobile-form">
-            <h1>Log in with Mobile Number</h1>
-            <p className="p3">
-              Please enter your registered mobile number and password
-            </p>
-            <label className="label">Mobile Number</label>
-            <input
-              type="text"
-              className="mtext"
-              placeholder="Mobile Number"
-              value={mobileNumber}
-              onChange={handleMobileChange}
-            />
-            <label className="label">Password</label>
-            <input
-              type="password"
-              className="mtext"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {error && <p className="text-red-600 text-sm">{error}</p>}
-            <button className="btn3" type="button" onClick={handleSendOTP}>
-              Send OTP
-            </button>
-            <p className="signup-text">
-              Don't have an account? <a href="/signup">Sign up</a>
-            </p>
-          </div>
-        </form>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="mobile-form">
+              <h1>Log in with Mobile Number</h1>
+              <p className="p3" style={{ textAlign: "left", marginLeft: 15,fontFamily:"Poppins" }}>
+                Please enter your registered mobile number
+              </p>
+              <input
+                type="text"
+                className="mtext"
+                placeholder="Mobile Number"
+                value={mobileNumber}
+                style={{
+                  borderWidth: 1,
+                  borderColor: isMobileError ? "red" : "#000",
+                  outline: 0,
+                }}
+                onChange={(e) => setmobileNumber(e.target.value)}
+              />
+
+              {isMobileError && (
+                <div
+                  style={{
+                    color: isMobileError ? "red" : "green",
+                    textAlign: "left",
+                  }}
+                >
+                  {mobileMessage}
+                </div>
+              )}
+
+              <button className="btn3" type="submit">
+                Send OTP
+              </button>
+              <p className="signup-text"  style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "500" }}>
+                Don't have an account? <a href="/signup">Sign up</a>
+              </p>
+            </div>
+          </form>
+        </div>
       </>
     </LoginLayout>
   );

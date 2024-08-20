@@ -7,16 +7,13 @@
 .c-container {
   /* width: 25vw; */
   /* height: 38vh; */
-  height: 271px;
+  height: auto !important;
   width: 360px;
-  padding-left: 28px;
-  padding-right: 28px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  /* border: 2px solid red; */
+  padding: 28px !important;
+  border: 1px solid #0ED991;
   background-color: rgba(91, 251, 194, 0.36);
   border-radius: 16px;
-  margin-bottom: 32px;
+  margin: 8px !important;
 }
 .c-date {
   margin-bottom: 20px;
@@ -32,4 +29,26 @@
 }
 .c-lessions-c {
   margin-bottom: 8px;
+}
+@media screen and (max-width: 991px) {
+  .layout-main-content {padding: 0;}
+  .c-container {margin-bottom: 10px !important;}
+}
+@media screen and (max-width: 550px) {
+  .c-container {width: 100% !important; margin: 0 !important; margin-bottom: 20px !important;}
+  .capital-display {
+    position: relative !important;
+    display: block !important;
+    text-align: center;
+    padding: 10px 0;
+    left: 0;
+  }
+  .month-display-container {
+    width: auto !important;
+    height: auto !important;
+    padding: 10px 0 !important;
+    left: 0;
+    text-align: center;
+  }
+  .month-display {margin: 0 20px !important; display: inline-block !important;}
 }

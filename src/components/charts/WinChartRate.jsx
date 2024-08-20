@@ -28,16 +28,16 @@ const WinRateChart = () => {
       {
         label: "Win",
         data: [2, 2, 3, 2, 2],
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(14, 217, 145, 1)",
+        borderColor: "rgba(14, 217, 145, 1)",
         borderWidth: 1,
         stack: "Stack 0",
       },
       {
         label: "Loss",
         data: [-1, -3, -1, -1, -1],
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: "rgba(244, 76, 96, 1)",
+        borderColor: "rgba(244, 76, 96, 1)",
         borderWidth: 1,
         stack: "Stack 0",
       },
@@ -69,10 +69,14 @@ const WinRateChart = () => {
   };
 
   return (
-    <div style={{ width: "100%",marginBottom:24  }}>
-      <Card style={{backgroundColor: "rgba(250, 247, 255, 1)",}}>
+    <div style={{ width: "100%", marginBottom: 24 }}>
+      <Card style={{ backgroundColor: "rgba(250, 247, 255, 1)" }}>
         <Card.Body>
-          <Card.Title>Win Rate</Card.Title>
+          <Card.Title
+            style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "500" }}
+          >
+            Win Rate
+          </Card.Title>
           <Bar data={data} options={options} />
         </Card.Body>
       </Card>

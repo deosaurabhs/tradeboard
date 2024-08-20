@@ -17,7 +17,7 @@ function TradeLogTable() {
     >
       <table className="trade-table">
         <thead>
-          <tr>
+          <tr className="tradelog">
             <th>Date-Time</th>
             <th>Instrument Name</th>
             <th>Quantity </th>
@@ -31,7 +31,7 @@ function TradeLogTable() {
         </thead>
 
         <tbody>
-          <tr>
+          <tr className="tradelog">
             <td>24-5-2024, 10:30:25</td>
             <td>Tata Motor</td>
             <td>50</td>
@@ -59,17 +59,56 @@ function TradeLogTable() {
       </table>
 
       <div className="d-flex justify-content-between align-items-center trade-log-bottom">
-        <div className="d-flex align-items-center trade-log-bottom-text">
+        <div
+          className="d-flex align-items-center trade-log-bottom-text green-bg"
+          style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "400" }}
+        >
           Today’s Profit :{" "}
-          <span style={{ color: "rgba(14, 217, 145, 1)" }}> ₹ 1000</span>
+          <span
+            style={{
+              color: "rgba(14, 217, 145, 1)",
+              fontSize: 20,
+              fontFamily: "Poppins",
+              fontWeight: "500",
+            }}
+          >
+            {" "}
+            ₹ 1000
+          </span>
         </div>
-        <div className="d-flex align-items-center trade-log-bottom-text">
+        <div
+          className="d-flex align-items-center trade-log-bottom-text violet-bg"
+          style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "400" }}
+        >
           Today’s Charges :{" "}
-          <span style={{ color: "rgba(134, 77, 219, 1)" }}> ₹ 2000</span>
+          <span
+            style={{
+              color: "rgba(14, 217, 145, 1)",
+              fontSize: 20,
+              fontFamily: "Poppins",
+              fontWeight: "500",
+            }}
+          >
+            {" "}
+            ₹ 2000
+          </span>
         </div>
-        <div className="d-flex align-items-center trade-log-bottom-text">
+        <div
+          className="d-flex align-items-center trade-log-bottom-text red-bg"
+          style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "400" }}
+        >
           Today’s Loss :{" "}
-          <span style={{ color: "rgba(244, 76, 96, 1)" }}> ₹ 1000</span>
+          <span
+            style={{
+              color: "rgba(14, 217, 145, 1)",
+              fontSize: 20,
+              fontFamily: "Poppins",
+              fontWeight: "500",
+            }}
+          >
+            {" "}
+            ₹ 1000
+          </span>
         </div>
       </div>
     </div>

@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-
+  width: 100%;
+  /* padding: 20px; */
 }
 
 .calendar-tilecolor-container {
@@ -12,7 +12,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top:.8rem;
+  margin-top: 0.8rem;
 }
 
 .calendar-tilecolor-container span {
@@ -38,8 +38,8 @@
   color: #ff8c00;
 }
 
-.calendar-holiday{
-  width: .4rem;
+.calendar-holiday {
+  width: 0.4rem;
   height: 0.4rem;
   background-color: rgba(245, 184, 73, 0.81) !important;
 }
@@ -50,37 +50,98 @@
 }
 
 .calendar-today {
-  width: .4rem;
+  width: 0.4rem;
   height: 0.4rem;
   background-color: rgba(160, 115, 240, 1) !important;
 }
 
-.calendar-center{
+.calendar-center {
   display: flex;
   align-items: center;
 }
 
-.calendar-weekend{
-  width: .4rem;
+.calendar-weekend {
+  width: 0.4rem;
   height: 0.4rem;
   background-color: rgba(176, 176, 176, 1) !important;
 }
 
-.calendar-profit{
-  width: .4rem;
+.calendar-profit {
+  width: 0.4rem;
   height: 0.4rem;
   background-color: rgba(14, 217, 145, 1) !important;
 }
 
-.calendar-loss{
-  width: .4rem;
+.calendar-loss {
+  width: 0.4rem;
   height: 0.4rem;
   background-color: rgba(244, 76, 96, 1) !important;
 }
 
-.calendar-text-color{
+.calendar-text-color {
   font-size: 12px;
   font-weight: 400;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+/* customCalendar.css */
+.calendar-today {
+  background-color: rgba(134, 77, 219, 1);
+}
+
+.calendar-profit {
+  background-color: rgba(14, 217, 145, 1);
+}
+
+.calendar-loss {
+  background-color: rgba(244, 76, 96, 1);
+}
+
+.calendar-holiday {
+  background-color: rgba(245, 184, 73, 0.81);
+}
+
+.calendar-weekend {
+  background-color: rgba(152, 152, 152, 1);
+}
+
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-header .current-month {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.custom-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #6f48eb;
+}
+/* Ensure the calendar tile content is centered */
+.react-calendar__tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-calendar__tile--active {
+  background-color: transparent;
+}
+
+.calendarDay {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  margin: 16px;
+  font-size: 12px;
 }

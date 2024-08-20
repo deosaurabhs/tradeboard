@@ -9,3 +9,15 @@
   /* bottom: 32px; */
   transition: height 0.3s ease-in-out;
 }
+
+.tradelog th {
+  font-size: 14;
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+.tradelog td {
+  font-size: 12;
+  font-family: "Poppins";
+  font-weight: 400;
+}

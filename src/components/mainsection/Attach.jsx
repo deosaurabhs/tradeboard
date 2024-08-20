@@ -7,14 +7,12 @@ function Attach() {
     <div className="today-journal-attach">
       <div className="attach-container">
         <img src={attachIcon} alt="Attach icon" className="attach-icon" />
-        <span>Attach</span>
+        <span
+          style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "500" }}
+        >
+          Attach
+        </span>
       </div>
-      {/* <div className="clear-container">
-        <div className="close">
-          <img src={closeIcon} alt="Attach icon" className="attach-icon" />
-        </div>
-        <span>Clear all</span>
-      </div> */}
     </div>
   );
 }
