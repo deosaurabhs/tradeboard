@@ -1,0 +1,189 @@
+.social-icons {
+    display: flex;
+    border: none;
+    border-radius: 0%;
+    margin: 0;
+    align-items: center;
+  }
+  .right-side {
+    background-image: linear-gradient(#A073F0, #7886DD);
+    color: white;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    padding-top: 120px;
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 100%;
+    width: 50%;
+}
+.backbtn{
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.backdiv{
+  align-self: flex-start;
+  margin-left: 30px;
+}
+  .h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .p4 {
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .otpgmail {
+    background-color: #FAF7FF;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+  }
+  .resend-otp2 a {
+    color: #A073F0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .resend-otp2 a:hover {
+    text-decoration: underline;
+  }
+  .vtext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    padding: 15px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  .btn5 {
+    width: 520px;
+    padding: 15px;
+    color: white;
+    background-color: #A073F0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    align-self: center;
+  
+  }
+  .resend-otp2{
+    display: flex;
+    align-self: center;
+  }
+  
+  /* OTP send Gmail */
+  .tpsendgmail {
+    background-color: #FAF7FF;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+  }
+  
+  /* new password */
+  .social-icons {
+    display: flex;
+    border: none;
+    border-radius: 0%;
+    margin: 0;
+    align-items: center;
+  }
+  .h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .p4 {
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .tpsendgmail {
+    background-color: #FAF7FF;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+  }
+  .resend-otp2 a {
+    color: #A073F0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .resend-otp2 a:hover {
+    text-decoration: underline;
+  }
+  .vtext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    padding: 15px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  .btn6 {
+    width: 520px;
+    padding: 15px;
+    color: white;
+    background-color: #A073F0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    align-self: center;
+  
+  }
+  .resend-otp2{
+    display: flex;
+    align-self: center;
+  }
+  
+  /* Signin Password */
+  .btn7 {
+    width: 520px;
+    padding: 15px;
+    color: white;
+    background-color: #A073F0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    align-self: center;
+  
+  }
+  .vtext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    padding: 15px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  .social-icons {
+    display: flex;
+    border: none;
+    border-radius: 0%;
+    margin: 0;
+    align-items: center;
+  }
+  .h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .p4 {
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .label{
+    align-self: baseline;
+  }
+
+  /* .etext{
+  height: 45px;
+} */

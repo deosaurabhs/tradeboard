@@ -1,0 +1,35 @@
+.c-divider {
+  border: none;
+  height: 2px;
+  background-color: #000;
+  margin: 20px 0;
+}
+.c-container {
+  /* width: 25vw; */
+  /* height: 38vh; */
+  height: 271px;
+  width: 360px;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* border: 2px solid red; */
+  background-color: rgba(91, 251, 194, 0.36);
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+.c-date {
+  margin-bottom: 20px;
+  font-size: 16;
+  color: rgba(28, 29, 34, 1);
+}
+.c-notes-c {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.c-mistake-c {
+  margin-bottom: 8px;
+}
+.c-lessions-c {
+  margin-bottom: 8px;
+}

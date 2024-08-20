@@ -1,0 +1,294 @@
+
+  
+  
+  .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 520px;
+    height: 414px;
+}
+
+.main-container form {
+  background-color: #FAF7FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.butn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  padding: 10px;
+  margin: 10px auto;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #F3F6F8;
+  cursor: pointer;
+  box-shadow: 0.5px 0.5px 0.5px #a1a1a1;
+  z-index: 1px;
+}
+
+.btn:hover {
+  color: #8326f5;
+}
+
+.btn img {
+  margin-right: 10px;
+}
+
+.h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.pl {
+  color: #888;
+  margin-bottom: 20px;
+  margin-left: -190px;
+}
+
+.signup-text a {
+  color: #A073F0;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+.text {
+  padding: 10px;
+}
+
+.text h1 {
+  margin-bottom: 16px;
+}
+
+#left-side{
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+text-align: center;
+
+
+
+}
+
+#right-side {
+    background-image: linear-gradient(#A073F0, #7886DD);
+    color: white;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    padding-top: 120px;
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 100%;
+    width: 50%;
+ 
+ 
+}
+
+  /* Slider Styles */
+  .slick-slide img {
+    display: block;
+    width: 100%; 
+
+
+  }
+  
+ 
+.slick-prev::before{
+  display: none;
+}
+.slick-next::before{
+  display: none;
+}
+
+form{
+  background-color: #FAF7FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+  width: 100%;
+}
+
+#bg{
+  background-color: #FAF7FF;
+  height: 742px;
+}
+
+/* //Email login// */
+
+  .h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    width: 337px;
+  }
+  .p2 {
+    color: #888;
+    margin-bottom: 20px;
+    align-self: baseline;
+  }
+  .email-form {
+    background-color: #FAF7FF;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+  }
+  .signup-text a {
+    color: #A073F0;
+    text-decoration: none;
+  }
+  .signup-text a:hover {
+    text-decoration: underline;
+  }
+  .etext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    padding: 15px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  .btn2 {
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    padding: 15px;
+    color: white;
+    background-color: #A073F0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  .forgot-pass{
+    color: red;
+    text-align:right;
+    cursor: pointer;
+  }
+  
+.backbtn{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin-left: 48px;
+}
+.backdiv{
+    align-self: flex-start;
+    margin-left: 59px;
+}
+
+/* //Mobile Login// */
+
+.p3 {
+  color: #888;
+  margin-bottom: 20px;
+}
+.mobile-form {
+  background-color: #FAF7FF;
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+.mtext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 520px;
+  padding: 15px;
+  margin: 10px auto;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+.btn3 {
+  align-items: center;
+  justify-content: center;
+  width: 520px;
+  padding: 15px;
+  color: white;
+  background-color: #A073F0;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+
+/* //otp verification// */
+
+.p3 {
+  color: #888;
+  margin-bottom: 20px;
+}
+.otpver {
+  background-color: #FAF7FF;
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+.p3 a {
+  color: #A073F0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.p3 a:hover {
+  text-decoration: underline;
+}
+.vtext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 520px;
+  padding: 15px;
+  margin: 10px auto;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+.btn4 {
+  width: 520px;
+  padding: 15px;
+  color: white;
+  background-color: #A073F0;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  align-self: center;
+
+}
+.resend-otp{
+  display: flex;
+  align-self: center;
+}
+.label{
+  align-self: baseline;
+}
+
+/* .etext{
+  height: 45px;
+} */

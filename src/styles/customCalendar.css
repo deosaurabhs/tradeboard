@@ -1,0 +1,86 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+}
+
+.calendar-tilecolor-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top:.8rem;
+}
+
+.calendar-tilecolor-container span {
+  font-size: 0.6rem;
+}
+
+.react-calendar__tile {
+  border-radius: 8px;
+}
+
+.profit {
+  background-color: #e0ffe0 !important;
+  color: #006400;
+}
+
+.loss {
+  background-color: #ffe0e0 !important;
+  color: #8b0000;
+}
+
+.holiday {
+  background-color: #fff0b3 !important;
+  color: #ff8c00;
+}
+
+.calendar-holiday{
+  width: .4rem;
+  height: 0.4rem;
+  background-color: rgba(245, 184, 73, 0.81) !important;
+}
+
+.today {
+  background-color: rgba(160, 115, 240, 1) !important;
+  color: #4b0082;
+}
+
+.calendar-today {
+  width: .4rem;
+  height: 0.4rem;
+  background-color: rgba(160, 115, 240, 1) !important;
+}
+
+.calendar-center{
+  display: flex;
+  align-items: center;
+}
+
+.calendar-weekend{
+  width: .4rem;
+  height: 0.4rem;
+  background-color: rgba(176, 176, 176, 1) !important;
+}
+
+.calendar-profit{
+  width: .4rem;
+  height: 0.4rem;
+  background-color: rgba(14, 217, 145, 1) !important;
+}
+
+.calendar-loss{
+  width: .4rem;
+  height: 0.4rem;
+  background-color: rgba(244, 76, 96, 1) !important;
+}
+
+.calendar-text-color{
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 5px;
+  margin-right: 5px;
+}
