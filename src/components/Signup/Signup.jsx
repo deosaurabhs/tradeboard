@@ -87,7 +87,7 @@ function Signup() {
     return (
       <div style={dividerStyle}>
         <span style={lineStyle}></span>
-        <span style={textStyle}>OR</span>
+        <span style={textStyle}><img className="img-fluid my-4" src={require("../../assets/images/OR.png")} /></span>
         <span style={lineStyle}></span>
       </div>
     );
