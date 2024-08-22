@@ -1,3 +1,6 @@
+body {
+  background: #FAF7FF;
+}
 .social-icons {
     display: flex;
     border: none;
