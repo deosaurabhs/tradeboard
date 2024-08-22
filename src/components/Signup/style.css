@@ -48,7 +48,7 @@ label {
   background: #F3F6F8;
   border: 1.5px solid #E7E7EA;  
   color: #000000;
-  font-weight: 600;
+  font-weight: 500 !important;
   border-radius: 12px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
   padding: 10px 0;
