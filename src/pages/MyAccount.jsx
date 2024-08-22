@@ -12,9 +12,9 @@ function MyAccount() {
 
   return (
     <Layout>
-      <form>
+      <form className="my-account-form">
         <div
-          className="d-flex w-100 justify-content-between align-items-center "
+          className="top-section d-flex w-100 justify-content-between align-items-center "
           style={{ marginBottom: 24 }}
         >
           <h4
@@ -50,7 +50,7 @@ function MyAccount() {
         </div>
 
         <div
-          className="mb-4 w-100"
+          className="box mb-4 w-100"
           style={{ backgroundColor: "white", padding: 31, borderRadius: 24 }}
         >
           <div className="d-flex w-100 d-flex justify-content-between align-items-center">
@@ -153,7 +153,7 @@ function MyAccount() {
 
         {/* <!-- Password Section --> */}
         <div
-          className="mb-4 w-100"
+          className="box mb-4 w-100"
           style={{ backgroundColor: "white", padding: 31, borderRadius: 24 }}
         >
           <div className="d-flex w-100 d-flex justify-content-between align-items-center">
@@ -225,7 +225,7 @@ function MyAccount() {
 
         {/* <!-- Dashboard Settings Section --> */}
         <div
-          className="mb-4 w-100"
+          className="box mb-4 w-100"
           style={{ backgroundColor: "white", padding: 31, borderRadius: 24 }}
         >
           <div className="d-flex w-100 d-flex justify-content-between align-items-center">
@@ -328,7 +328,7 @@ function MyAccount() {
 
         {/* <!-- Subscription Details Section --> */}
         <div
-          className="mb-4 w-100"
+          className="box mb-4 w-100"
           style={{ backgroundColor: "white", padding: 31, borderRadius: 24 }}
         >
           <div className="d-flex w-100 d-flex justify-content-between align-items-center">
