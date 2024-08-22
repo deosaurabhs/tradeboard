@@ -243,14 +243,14 @@ function Signup() {
                     {errors.confirmPassword}
                   </div>
                 )}
-                <div className="checkbox">
-                  <input type="checkbox" />
-                  <p  style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "500" }}>
+                <label className="form-check">
+                  <input type="checkbox" className="form-check-input" />
+                  <p  style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "400", textAlign: "left" }}>
                     By creating an account you agree to our{" "}
                     <a href="#terms">Terms & Conditions</a> and{" "}
                     <a href="#privacy">Privacy Policy</a>
                   </p>
-                </div>
+                </label>
                 <button
                   type="submit"
                   className="signup"
