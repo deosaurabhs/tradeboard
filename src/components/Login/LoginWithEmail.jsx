@@ -166,9 +166,9 @@ function LoginWithEmail() {
                 className="signup-text"
                 // onClick={() => signUpMethod()}
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   fontFamily: "Poppins",
-                  fontWeight: "500",
+                  fontWeight: "400",
                 }}
               >
                 Don't have an account? <a href="/signup">Sign up</a>
