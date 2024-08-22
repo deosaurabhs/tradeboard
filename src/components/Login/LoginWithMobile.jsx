@@ -149,7 +149,7 @@ function LoginWithMobile(props) {
               <button className="btn3" type="submit">
                 Send OTP
               </button>
-              <p className="signup-text"  style={{ fontSize: 20, fontFamily: "Poppins", fontWeight: "500" }}>
+              <p className="signup-text"  style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "400" }}>
                 Don't have an account? <a href="/signup">Sign up</a>
               </p>
             </div>
