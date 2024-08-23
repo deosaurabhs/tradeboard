@@ -9,7 +9,7 @@
 }
 
 .main-parent {
-  background-color: rgba(241, 241, 242, 1);
+  /* background-color: rgba(241, 241, 242, 1); */
   padding-left: 24px;
   padding-right: 24px;
   padding-bottom: 24px;
@@ -315,6 +315,7 @@ button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar
 .calendar-holiday ~ .calendar-text-color {
   display: none !important;
 }
+.layout-main-content {background: #FAF7FF !important;}
 
 @media screen and (max-width: 991px) {
   .main-parent {padding: 0 15px 0 15px;}
