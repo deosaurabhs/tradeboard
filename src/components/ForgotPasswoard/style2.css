@@ -73,7 +73,7 @@ body {
   }
   .btn5 {
     width: 520px;
-    padding: 15px;
+    padding: 12px;
     color: white;
     background-color: #A073F0;
     border: 1px solid #ccc;
@@ -146,7 +146,7 @@ body {
   }
   .btn6 {
     width: 520px;
-    padding: 15px;
+    padding: 12px;
     color: white;
     background-color: #A073F0;
     border: 1px solid #ccc;
@@ -175,7 +175,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 520px;
-    padding: 15px;
+    padding: 12px 24px;
     margin: 10px auto;
     font-size: 16px;
     border: 1px solid #ccc;
