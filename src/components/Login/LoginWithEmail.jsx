@@ -154,12 +154,12 @@ function LoginWithEmail() {
                 type="submit"
                 className="btn2"
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   fontFamily: "Poppins",
                   fontWeight: "500",
                 }}
               >
-                log in
+                Log in
               </button>
 
               <p
