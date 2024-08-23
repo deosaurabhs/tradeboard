@@ -309,6 +309,13 @@ button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar
   justify-content: space-between;
 }
 
+.calendar-holiday {
+  display: none !important;
+}
+.calendar-holiday ~ .calendar-text-color {
+  display: none !important;
+}
+
 @media screen and (max-width: 991px) {
   .main-parent {padding: 0 15px 0 15px;}
   .layout-container {display: block;}
