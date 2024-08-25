@@ -233,6 +233,7 @@ function PerformanceAnalytics() {
                           fontSize: 14,
                           fontFamily: "Poppins",
                           fontWeight: "400",
+                          color: "#A6A8B1"
                         }}
                       >
                         <span
@@ -300,6 +301,7 @@ function PerformanceAnalytics() {
                           fontSize: 14,
                           fontFamily: "Poppins",
                           fontWeight: "400",
+                          color: "#A6A8B1"
                         }}
                       >
                         <span
