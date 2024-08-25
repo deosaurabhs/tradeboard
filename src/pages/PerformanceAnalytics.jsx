@@ -146,10 +146,10 @@ function PerformanceAnalytics() {
 
   return (
     <Layout>
-      <div className="d-flex flex-column">
-        <div className="card m-3" style={{ padding: 32 }}>
+      <div className="analytics-section d-flex flex-column">
+        <div className="card m-3" style={{ padding: 24 }}>
           <div style={{ marginBottom: 32 }}>
-            <h2>Tradeboard Intelligence</h2>
+            <h2 style={{fontWeight: 600}}>Tradeboard Intelligence</h2>
             <button
               style={{ width: 131, position: "absolute", top: 15, right: 32 }}
               class="btn btn-default"
@@ -164,14 +164,14 @@ function PerformanceAnalytics() {
             </button>
           </div>
           <div className="row">
-            <div className="col-md-6">
+            <div className="profit-days col-md-6">
               <StatCard
                 title="On Profitable Days"
                 stats={profitableDaysStats}
                 titleColor="#28a745"
               />
             </div>
-            <div className="col-md-6">
+            <div className="loss-days col-md-6">
               <StatCard
                 title="On Loss Making Days"
                 stats={lossMakingDaysStats}
@@ -181,7 +181,7 @@ function PerformanceAnalytics() {
           </div>
 
           <div className="row">
-            <div className="col-md-6">
+            <div className="break-even-days col-md-6">
               <StatCard
                 title="On Break-Even Days"
                 stats={breakEvenDaysStats}
@@ -240,6 +240,7 @@ function PerformanceAnalytics() {
                             fontSize: 20,
                             fontFamily: "Poppins",
                             fontWeight: "400",
+                            color: "#0ED991"
                           }}
                         >
                           15
@@ -306,6 +307,7 @@ function PerformanceAnalytics() {
                             fontSize: 20,
                             fontFamily: "Poppins",
                             fontWeight: "400",
+                            color: "#DC3545"
                           }}
                         >
                           12
