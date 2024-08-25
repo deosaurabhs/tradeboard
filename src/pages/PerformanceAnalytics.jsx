@@ -324,7 +324,7 @@ function PerformanceAnalytics() {
           </div>
         </div>
 
-        <div className="card main-card m-3" style={{ padding: 32 }}>
+        <div className="card main-card m-3" style={{ padding: 24 }}>
           <div className="d-flex align-items-center justify-content-between">
             <h3 className="mb-4">Journal Analysis</h3>
             <div className="d-flex align-items-center">
