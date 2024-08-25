@@ -454,6 +454,7 @@ form{
   width: auto !important;
 }
 
+.analytics-section h3 {font-weight: 600 !important;}
 .analytics-section .card, .analytics-section .row .card {border: 1px solid #E7E7EA !important;}
 .analytics-section .row .card .card-title {font-weight: 600 !important; margin-bottom: 15px;}
 .analytics-section .row .card p {font-size: 12.5px !important; margin-bottom: 10px;}
