@@ -239,7 +239,7 @@ function PerformanceAnalytics() {
                           style={{
                             fontSize: 20,
                             fontFamily: "Poppins",
-                            fontWeight: "400",
+                            fontWeight: "600",
                             color: "#0ED991"
                           }}
                         >
@@ -306,7 +306,7 @@ function PerformanceAnalytics() {
                           style={{
                             fontSize: 20,
                             fontFamily: "Poppins",
-                            fontWeight: "400",
+                            fontWeight: "600",
                             color: "#DC3545"
                           }}
                         >
