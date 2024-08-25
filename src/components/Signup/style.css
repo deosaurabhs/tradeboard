@@ -462,7 +462,7 @@ form{
 .analytics-section .loss-days h3 {color: #F44C60 !important;}
 .analytics-section .break-even-days h3 {color: #636AD8 !important;}
 .analytics-section .main-card {box-shadow: 0 8px 20px rgba(0,0,0,0.04) !important;}
-.analytics-section .btn.btn-default {border: 1px solid #636AD8 !important; color: #636AD8 !important;}
+.analytics-section .btn.btn-default {background: transparent !important; border: 1px solid #636AD8 !important; color: #636AD8 !important;}
 
 @media screen and (max-width: 1024px) {
   #right-side {padding: 30px 20px !important;}
