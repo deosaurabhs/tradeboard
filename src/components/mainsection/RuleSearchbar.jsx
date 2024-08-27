@@ -8,7 +8,7 @@ function RuleSearchbar() {
         className="my-rule-searchbar-heading"
         style={{ fontSize: 21, fontFamily: "Poppins", fontWeight: "500", textAlign: "left" }}
       >
-        My Rules
+        Rules
       </div>
       {/* <div className="my-rule-search-container">
         <input
