@@ -56,7 +56,7 @@ function MainSection() {
         <div className="today-journal">
           <div
             className="today-journal-heading"
-            style={{ fontSize: 12, fontFamily: "Poppins", fontWeight: "500" }}
+            style={{ fontSize: 21, fontFamily: "Poppins", fontWeight: "500" }}
           >
             Today’s Journal <span>(Saving)</span>
           </div>
