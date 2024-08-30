@@ -8,14 +8,11 @@
   background-color: rgba(244, 228, 255, 1);
   text-align: start;
   border: 0px solid black;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 16px;
+  padding: 5px 8px;
   font-size: .9rem;
   font-weight: 500;
   border-bottom-width: .5px;
   border-color: rgba(231, 231, 234, 1);
-  /* padding-right: 16px; */
 }
 
 .trade-table td {
@@ -29,7 +26,6 @@
   font-weight: 400;
   border-bottom-width: .5px;
   border-color: rgba(231, 231, 234, 1);
-  /* padding-right: 16px; */
 }
 
 .trade-log-closed {
