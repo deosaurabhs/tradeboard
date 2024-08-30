@@ -118,8 +118,9 @@ button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar
 }
 
 .today-journal span {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
+  color: #6E7079;
 }
 
 .my-rule {
