@@ -36,7 +36,7 @@ function MainSection() {
           <div className="col-12 col-sm-5 col-md-4">
             <span
               className="main-dateText"
-              style={{ fontSize: 20, fontWeight: "500", fontFamily: "Poppins" }}
+              style={{ fontSize: 18, fontWeight: "400", fontFamily: "Poppins" }}
             >
               Monday, 31 May 2024
             </span>
@@ -44,7 +44,7 @@ function MainSection() {
           <div className="col-12 col-sm-4 col-md-4 text-center text-sm-end">
             <span
               className="capital"
-              style={{ fontSize: 24, fontWeight: "500", fontFamily: "Poppins" }}
+              style={{ fontSize: 21, fontWeight: "500", fontFamily: "Poppins" }}
             >
               Capital: ₹ 1,00,000
             </span>
