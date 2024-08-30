@@ -36,7 +36,7 @@ function MainSection() {
           <div className="col-12 col-sm-5 col-md-4">
             <span
               className="main-dateText"
-              style={{ fontSize: 18, fontWeight: "400", fontFamily: "Poppins" }}
+              style={{ fontSize: 18, fontWeight: "400", fontFamily: "Poppins", textAlign: "center" }}
             >
               Monday, 31 May 2024
             </span>
