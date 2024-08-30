@@ -469,6 +469,7 @@ form{
   font-weight: 400 !important;
 }
 .analytics-section .btn.btn-default {background: transparent !important; border: 1px solid #636AD8 !important; color: #636AD8 !important;}
+.right-side-section-signup {padding: 200px 100px !important;}
 
 @media screen and (max-width: 1024px) {
   #right-side {padding: 30px 20px !important;}
