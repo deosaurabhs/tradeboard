@@ -470,7 +470,7 @@ form{
 }
 .analytics-section .btn.btn-default {background: transparent !important; border: 1px solid #636AD8 !important; color: #636AD8 !important;}
 .right-side-section-signup {padding: 200px 100px !important;}
-.c-notes-p {
+.c-notes-p, .c-mistake-p, .c-lessions-p {
   white-space: nowrap;
   text-overflow: ellipsis;
   display: block;
