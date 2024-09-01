@@ -317,6 +317,12 @@ button.react-calendar__tile.react-calendar__month-view__days__day.react-calendar
   display: none !important;
 }
 .layout-main-content {background: #FAF7FF !important;}
+p.card-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 @media screen and (max-width: 991px) {
   .main-parent {padding: 0 15px 0 15px;}
