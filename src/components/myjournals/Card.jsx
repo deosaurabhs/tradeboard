@@ -101,8 +101,8 @@ function Card({ item, index }) {
 
       <hr />
 
-      <div className="d-flex">
-        <div>
+      <div className="d-flex rules-rate">
+        <div className="sec">
           <div
             style={{
               fontSize: 14,
@@ -125,7 +125,7 @@ function Card({ item, index }) {
           </div>
         </div>
 
-        <div>
+        <div className="sec">
           <div
             style={{
               fontSize: 14,

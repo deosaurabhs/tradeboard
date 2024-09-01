@@ -130,6 +130,8 @@ label {
   width: 50%;
 }
 
+.rules-rate .sec {text-align: center !important; padding: 0 5px;}
+
   /* Slider Styles */
   .slick-slide img {
     display: block;
