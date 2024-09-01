@@ -59,7 +59,7 @@ function PasswordNew() {
           <input
             type="password"
             className="vtext"
-            placeholder="New Password"
+            placeholder="New password"
             value={newPassword}
             style={{ fontFamily: "Poppins" }}
             onChange={(e) => setNewPassword(e.target.value)}
@@ -74,7 +74,7 @@ function PasswordNew() {
           <input
             type="password"
             className="vtext"
-            placeholder="Confirm Password"
+            placeholder="Confirm password"
             value={confirmPassword}
             style={{ fontFamily: "Poppins" }}
             onChange={(e) => setConfirmPassword(e.target.value)}
