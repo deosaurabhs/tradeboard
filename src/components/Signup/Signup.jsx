@@ -148,8 +148,8 @@ function Signup() {
     <LoginLayout>
       <div className="container-fluid">
         <div className="row" id="bg">
-          <div className="col-lg-6" id="left-side">
-            <form className="block" onSubmit={handleSubmit}>
+          <div className="col-lg-6 pt-0" id="left-side">
+            <form className="block pt-0" onSubmit={handleSubmit}>
               <div className="social-icons">
                 <h1 className="h1sign">Sign up</h1>
                 <p
