@@ -181,7 +181,7 @@ function Signup() {
                 <input
                   type="text"
                   className="etext"
-                  placeholder="Full Name"
+                  placeholder="Full name"
                   style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "400" }}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
@@ -207,7 +207,7 @@ function Signup() {
                 <input
                   type="number"
                   className="etext"
-                  placeholder="Mobile Number"
+                  placeholder="Mobile number"
                   value={mobile}
                   style={{ fontSize: 16, fontFamily: "Poppins", fontWeight: "400" }}
                   onChange={(e) => setMobile(e.target.value)}

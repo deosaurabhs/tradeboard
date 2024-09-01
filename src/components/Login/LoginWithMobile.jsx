@@ -125,7 +125,7 @@ function LoginWithMobile(props) {
               <input
                 type="text"
                 className="mtext"
-                placeholder="Mobile Number"
+                placeholder="Mobile number"
                 value={mobileNumber}
                 style={{
                   borderWidth: 1,
